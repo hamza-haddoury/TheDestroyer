@@ -1,4 +1,4 @@
-![Polytech-banniere](https://polytech.univ-cotedazur.fr/medias/photo/polytech-nice-sophia-rvb-blanc_1614157449976-png)
+<img src="https://polytech.univ-cotedazur.fr/medias/photo/polytech-nice-sophia-rvb-blanc_1614157449976-png" alt="Logo Polytech Nice Sophia" title="Logo Polytech Nice Sophia">
 
 # TheDestroyer
 TheDestroyer est un projet Arduino réalisé dans le cadre de la formation de prépa intégrée de Polytech'Nice Sophia
