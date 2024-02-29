@@ -76,6 +76,7 @@ void setup() {
 }
 
 void loop() {
+  
   while (BlueT.available()) {
     caract = BlueT.read();
     Serial.println(caract);
@@ -182,7 +183,7 @@ void left(){
   digitalWrite(IN3,LOW);
   digitalWrite(IN4,HIGH);
 
-  analogWrite(END,power); //vitesse droit
+  //analogWrite(END,power); //vitesse droit
   analogWrite(ENG,power); //vitesse gauche
 }
 
@@ -195,5 +196,5 @@ void right(){
   digitalWrite(IN4,LOW);
 
   analogWrite(END,power); //vitesse droit
-  analogWrite(ENG,power); //vitesse gauche
+  //analogWrite(ENG,power); //vitesse gauche
 }
