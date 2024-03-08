@@ -66,23 +66,22 @@ void setup() {
   // Configuration des broches pour les servo-moteurs
   myServo1.attach(servoPin1);
   myServo2.attach(servoPin2);
-  myServo3.attach(servoPin3);
+  //myServo3.attach(servoPin3);
 
   // Démarre la communication série
   Serial.begin(9600);
   //Début de la communication bluetooth
   BlueT.begin(9600);
-  Serial.println("Bonjour -Pret pour les commandes AT");
+ 
 }
 
 void loop() {
-  
   while (BlueT.available()) {
     caract = BlueT.read();
     Serial.println(caract);
     switch(caract){
-      case 'R':
-        fire();
+      case 'A':
+        se();
         break;
       case 'T':
         rotateServoClockwise(myServo3, 40);
@@ -110,15 +109,17 @@ void loop() {
   }
 }
 
+
+
 //Fonction relatif au canon
 void MotorsOn() {
   // Activation du moteur 1
-  analogWrite(enableMotor1, 255);
+  analogWrite(enableMotor2, 100);
   digitalWrite(motor1Input1, LOW);
   digitalWrite(motor1Input2, HIGH);
 
   // Activation du moteur 2
-  analogWrite(enableMotor2, 255);
+  analogWrite(enableMotor1, 100);
   digitalWrite(motor2Input1, LOW);
   digitalWrite(motor2Input2, HIGH);
 }
@@ -128,25 +129,12 @@ void rotateServoClockwise(Servo servo, int angle) {
 }
 
 void MotorsOff(){
+  Serial.println("yyyy");
   digitalWrite(enableMotor1, LOW);
   digitalWrite(enableMotor2, LOW);
 }
 
-void fire(){
-  MotorsOn();
-  delay(800);
 
-  rotateServoClockwise(myServo2, 30);
-  delay(200);
-  rotateServoClockwise(myServo1, 40);
-  delay(200);
-
-  rotateServoClockwise(myServo1, -40); // Deuxième servo-moteur
-  delay(200);
-  rotateServoClockwise(myServo2, -30);
-  delay(200);
-  MotorsOff();
-}
 
 // Code relatif au mouvement
 void forward(){
@@ -197,4 +185,17 @@ void right(){
 
   analogWrite(END,power); //vitesse droit
   //analogWrite(ENG,power); //vitesse gauche
+}
+
+void se(){
+  MotorsOn();
+  delay(450);
+  rotateServoClockwise(myServo2, 15);
+  delay(100);
+  rotateServoClockwise(myServo1, 40);
+  delay(150);
+  rotateServoClockwise(myServo1, -40);
+  delay(100);
+  rotateServoClockwise(myServo2, -15);
+  MotorsOff();
 }
